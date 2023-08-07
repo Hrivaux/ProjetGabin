@@ -442,7 +442,7 @@ h6 {
   text-shadow: -1px 0 2px #2f4d5a;
 }
 
-#hero h2 {
+#hero   {
   color: #fff;
   margin-bottom: 50px;
   font-size: 20px;
@@ -482,13 +482,43 @@ h6 {
     line-height: 36px;
   }
 
-  #hero h2 {
+  #hero   {
     font-size: 18px;
     line-height: 24px;
     margin-bottom: 30px;
   }
 }
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  color: #191919;
+  position: relative;
+  z-index: 2;
+}
 
+.section-title span {
+  position: absolute;
+  top: 30px;
+  color: #7c5555;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 52px;
+  text-transform: uppercase;
+  line-height: 0;
+}
+
+ .h2{
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--bs-heading-color);
+}
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -506,16 +536,13 @@ section {
   padding-bottom: 30px;
 }
 
-.section-title h2 {
-  font-size: 32px;
-  font-weight: bold;
+.section-title {
+  text-align: center;
+  padding: 30px 0;
   position: relative;
-  margin-bottom: 30px;
-  color: #2f4d5a;
-  z-index: 2;
 }
 
-.section-title h2::after {
+.section-title  ::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -523,7 +550,6 @@ section {
   transform: translate(-50%, -50%);
   width: 122px;
   height: 66px;
-  background: url(../img/section-title-bg.png) no-repeat;
   z-index: -1;
 }
 
@@ -540,7 +566,7 @@ section {
   min-height: 40px;
 }
 
-.breadcrumbs h2 {
+.breadcrumbs   {
   font-size: 24px;
   font-weight: 300;
 }
@@ -832,7 +858,7 @@ p {
   line-height: 0;
 }
 
-.counts .count-box span {
+.counts .count-box  {
   font-size: 48px;
   line-height: 40px;
   display: block;
@@ -1057,7 +1083,7 @@ p {
   padding-top: 30px;
 }
 
-.portfolio-details .portfolio-description h2 {
+.portfolio-details .portfolio-description   {
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;

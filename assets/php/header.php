@@ -54,10 +54,10 @@ include('assets/php/sql.php')
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li>
-          <li><a class="nav-link scrollto" href="#about">A propos de nous</a></li>
+          <li><a class="nav-link scrollto active" href="index.php#hero">Accueil</a></li>
+          <li><a class="nav-link scrollto" href="index.php#about">A propos de nous</a></li>
           <!--<li><a class="nav-link scrollto" href="#services">Nos prjets </a></li>-->
-          <li><a class="nav-link scrollto" href="#services">Mes services</a></li>
+          <li><a class="nav-link scrollto" href="index.php#services">Mes services</a></li>
           <!--<li><a class="nav-link scrollto" href="#team">Team</a></li>-->
           <!--<li class="dropdown"><a href="#"><span>Mes projets</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -76,26 +76,39 @@ include('assets/php/sql.php')
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>-->
-          <li class="dropdown megamenu"><a class="nav-link scrollto" href="#portfolio"><span>Mes Projets</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li>
-                <strong>Mes dernières Bride sur mesure</strong>
-                <a href="#">Column 1 link 1</a>
-                <a href="#">Column 1 link 2</a>
-                <a href="#">Column 1 link 3</a>
-              </li>
-              <li>
-                <strong>Mes derniers projets Automobile</strong>
-                <a href="#">Column 2 link 1</a>
-                <a href="#">Column 2 link 2</a>
-                <a href="#">Column 3 link 3</a>
-              </li>
-              <li>
-                <strong>Autres</strong>
-                <a href="#">Column 3 link 1</a>
-                <a href="#">Column 3 link 2</a>
-                <a href="#">Column 3 link 3</a>
-              </li>
+          <?php
+$query = "
+SELECT categorie, titre
+FROM projects
+ORDER BY categorie
+";
+$stmt = $bdd->prepare($query);
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<li class="dropdown megamenu">
+  <a class="nav-link scrollto" href="index.php#portfolio">
+    <span>Mes Projets</span> <i class="bi bi-chevron-down"></i>
+  </a>
+  <ul>
+    <?php
+    $current_categorie = null;
+    foreach ($result as $row):
+      if ($current_categorie !== $row['categorie']):
+        $current_categorie = $row['categorie'];
+    ?>
+        <li>
+          <strong>Mes derniers <?= $current_categorie ?></strong>
+        </li>
+      <?php endif; ?>
+      <li>
+        <a href="index.php"><?= $row['titre'] ?></a>
+        <!-- Ajoutez plus d'informations sur le projet au besoin -->
+      </li>
+    <?php endforeach; ?>
+  </ul>
+</li>
               <!--<li>
                 <strong>Column 4</strong>
                 <a href="#">Column 4 link 1</a>
@@ -108,8 +121,7 @@ include('assets/php/sql.php')
                 <a href="#">Column 5 link 2</a>
                 <a href="#">Column 5 link 3</a>
               </li>-->
-            </ul>
-          </li>
+            
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

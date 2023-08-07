@@ -1,77 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Formulaire avec options dépendantes</title>
-</head>
-<body>
-  <form>
-    <label for="categorie">Choisissez une catégorie :</label>
-    <select id="categorie" name="categorie" onchange="updateOptions()">
-      <option value="equitation">Equitation</option>
-      <option value="automobile">Automobile</option>
-      <option value="objet">Objet</option>
-      <option value="mobilier">Mobilier</option>
-    </select>
+<?php
+include('assets/php/sql.php')
 
-    <div id="option-container">
-      <!-- Les options seront ajoutées dynamiquement ici -->
-    </div>
+// Requête pour récupérer toutes les catégories uniques
+$query_categories = "SELECT DISTINCT categorie FROM projects";
+$stmt_categories = $bdd->prepare($query_categories);
+$stmt_categories->execute();
+$categories = $stmt_categories->fetchAll(PDO::FETCH_ASSOC);
+?>
 
-    <input type="submit" value="Valider">
-  </form>
+<!-- Liste déroulante pour les catégories -->
+<select id="categorie" name="categorie" onchange="showTitres(this.value)">
+  <option value="">Sélectionnez une catégorie</option>
+  <?php foreach ($categories as $categorie): ?>
+    <option value="<?= $categorie['categorie'] ?>"><?= $categorie['categorie'] ?></option>
+  <?php endforeach; ?>
+</select>
 
-  <script>
-    function updateOptions() {
-      // Récupérer la valeur sélectionnée dans la liste déroulante "categorie"
-      const selectedCategorie = document.getElementById("categorie").value;
+<!-- Conteneur pour afficher les titres correspondant à la catégorie sélectionnée -->
+<div id="titres-container">
+  <?php
+  // Fonction pour afficher les titres correspondant à la catégorie sélectionnée
+  function afficherTitres($categorie, $bdd) {
+    $query_titres = "SELECT titre FROM projects WHERE categorie = :categorie";
+    $stmt_titres = $bdd->prepare($query_titres);
+    $stmt_titres->bindParam(':categorie', $categorie, PDO::PARAM_STR);
+    $stmt_titres->execute();
+    $titres = $stmt_titres->fetchAll(PDO::FETCH_ASSOC);
 
-      // Récupérer le conteneur des options
-      const optionContainer = document.getElementById("option-container");
+    // Afficher les titres dans une liste non ordonnée
+    echo '<ul>';
+    foreach ($titres as $titre) {
+      echo '<li>' . $titre['titre'] . '</li>';
+    }
+    echo '</ul>';
+  }
 
-      // Vider le conteneur des options actuelles
-      optionContainer.innerHTML = "";
+  // Vérifier si une catégorie est sélectionnée et afficher les titres correspondants
+  if (isset($_GET['categorie'])) {
+    $categorie_selectionnee = $_GET['categorie'];
+    afficherTitres($categorie_selectionnee, $bdd);
+  }
+  ?>
+</div>
 
-      // Ajouter les nouvelles options en fonction de la catégorie sélectionnée
-      switch (selectedCategorie) {
-        case "equitation":
-          optionContainer.innerHTML = `
-            <label for="sous-categorie">Sous-catégorie :</label>
-            <select id="sous-categorie" name="sous-categorie">
-              <option value="selle">Selle</option>
-              <option value="bride">Bride</option>
-            </select>
-          `;
-          break;
-        case "automobile":
-          optionContainer.innerHTML = `
-            <label for="sous-categorie">Sous-catégorie :</label>
-            <select id="sous-categorie" name="sous-categorie">
-              <option value="capote-de-voiture">Capote de voiture</option>
-              <option value="interieur-camping-car">Intérieur camping-car</option>
-            </select>
-          `;
-          break;
-        case "objet":
-          optionContainer.innerHTML = `
-            <label for="sous-categorie">Sous-catégorie :</label>
-            <select id="sous-categorie" name="sous-categorie">
-              <option value="fourreaux">Fourreaux</option>
-              <option value="porte-monnaie">Porte-monnaie</option>
-            </select>
-          `;
-          break;
-        case "mobilier":
-          optionContainer.innerHTML = `
-            <label for="sous-categorie">Sous-catégorie :</label>
-            <select id="sous-categorie" name="sous-categorie">
-              <option value="coussin-de-chaise">Coussin de chaise</option>
-            </select>
-          `;
-          break;
-        default:
-          break;
+<!-- Script JavaScript pour envoyer la requête de récupération des titres -->
+<script>
+function showTitres(categorie) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        document.getElementById('titres-container').innerHTML = xhr.responseText;
+      } else {
+        alert('Une erreur est survenue lors de la récupération des titres.');
       }
     }
-  </script>
-</body>
-</html>
+  };
+  xhr.open('GET', 'get_titles.php?categorie=' + encodeURIComponent(categorie), true);
+  xhr.send();
+}
+</script>

@@ -11,8 +11,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container" data-aos="fade-up">
-      <h1>Welcome to Squad</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      
       <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
   </section><!-- End Hero -->
@@ -21,7 +20,9 @@
 
     <!-- ======= About Section ======= -->
     <section id="about" class="">
-      <h1>Ma Présentation en Photos</h1>
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+    <span>Ma Présentation en Photos</span>
+      <h2>Ma Présentation en Photos</h2>
     <p>Bienvenue sur ma page de présentation! Voici quelques photos qui me représentent :</p>
 
     <div class="photo-gallery">
@@ -61,40 +62,41 @@
       <div class="container">
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <span>Services</span>
           <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Retrouver ci dessous tout les services que je peux vous proposer</p>
         </div>
 
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4 class="title"><a href="">Confection d'équipement pour chevaux</a></h4>
+              <p class="description">---------------------------</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <h4 class="title"><a href="">Confection d'équipement pour voiture/bateaux</a></h4>
+              <p class="description">-------------------------</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <h4 class="title"><a href="">Confection d'objet (fourreaux/porte monnaie)</a></h4>
+              <p class="description">-------------------</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <h4 class="title"><a href="">Confection de mobilier</a></h4>
+              <p class="description">--------------------------</p>
             </div>
           </div>
 
@@ -165,50 +167,82 @@
       <div class="container">
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <span>Mes Projets</span>
           <h2>Mes Projets</h2>
           <p>Vous pourrez trouver ci dessous tout les projets que j'ai déjà réalisé : </p>
         </div>
 
         <div class="row" data-aos="fade-in">
-  <div class="col-lg-12 d-flex justify-content-center">
-    <ul id="portfolio-flters">
-      <li data-filter="*" class="filter-active">Tout</li>
-      <li data-filter=".equitation">Equitation</li>
-      <li data-filter=".automobile">Automobile</li>
-      <li data-filter=".autre">Autre</li>
-    </ul>
-  </div>
+        
+        
+        <?php
+// Supposons que vous avez une connexion PDO établie et stockée dans la variable $bdd
+// Requête pour récupérer toutes les catégories
+$query_categories = "SELECT DISTINCT categorie FROM projects";
+$stmt_categories = $bdd->prepare($query_categories);
+$stmt_categories->execute();
+$categories = $stmt_categories->fetchAll(PDO::FETCH_COLUMN);
+
+// Requête pour récupérer les articles associés à chaque catégorie
+$query_articles = "SELECT * FROM projects";
+$stmt_articles = $bdd->prepare($query_articles);
+$stmt_articles->execute();
+$articles = $stmt_articles->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<!-- Votre code HTML pour les filtres -->
+<div class="col-lg-12 d-flex justify-content-center">
+  <ul id="portfolio-flters">
+    <li data-filter="*" class="filter-active">Tout</li>
+    <?php foreach ($categories as $categorie): ?>
+      <li data-filter=".<?= strtolower($categorie) ?>"><?= $categorie ?></li>
+    <?php endforeach; ?>
+  </ul>
+</div>
 </div>
 
-        <div class="row portfolio-container" data-aos="fade-up">
-
-        
-       <?php $sql = "SELECT * FROM projects";
-    $stmt = $bdd->query($sql);
-
-    // Vérifier si des articles existent dans la base de données
-    if ($stmt->rowCount() > 0) {
-      while ($article = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        // Récupérez la catégorie de l'article
-        $category = $article['categorie'];
-        // Remplacez les espaces par des tirets et convertissez en minuscules pour obtenir le nom de classe
-        $category_class = 'filter-' . strtolower(str_replace(' ', '-', $category));
-  ?>
-         <div class="col-lg-4 col-md-6 portfolio-item <?php echo $category_class; ?>">
-    <div class="portfolio-wrap">
-      <img src="<?php echo $article['image1']; ?>" class="img-fluid custom-img" alt="">
-      <div class="portfolio-links">
-        <a href="<?php echo $article['image1']; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-        <a href="portfolio-details.php?article_id=<?php echo $article['id']; ?>" title="More Details"><i class="bx bx-link"></i></a>
+<!-- Votre code HTML pour afficher les articles filtrables -->
+<!-- Votre code HTML pour afficher les articles filtrables -->
+<div class="row portfolio-container">
+  <?php foreach ($articles as $article): ?>
+    <div class="col-lg-4 col-md-6 portfolio-item <?= strtolower($article['categorie']) ?>">
+      <div class="portfolio-wrap">
+        <img src="<?= $article['image1'] ?>" class="img-fluid custom-img" alt="">
+        <div class="portfolio-links">
+          <a href="<?= $article['image1'] ?>" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+          <a href="portfolio-details.php?article_id=<?= $article['id'] ?>" title="More Details"><i class="bx bx-link"></i></a>
+        </div>
       </div>
     </div>
-  </div>
-  <?php
-      }
-    } else {
-      echo "<p>Aucun article trouvé dans la base de données.</p>";
-    }
-  ?>
+  <?php endforeach; ?>
+</div>
+
+
+<!-- Assurez-vous d'inclure jQuery et le fichier JavaScript pour Isotope (le plugin de filtrage) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  // Initialiser Isotope sur la liste d'articles
+  var $grid = $('.portfolio-container').isotope({
+    itemSelector: '.portfolio-item',
+    layoutMode: 'fitRows'
+  });
+
+  // Filtrer les articles lorsque l'utilisateur clique sur un filtre
+  $('#portfolio-flters li').on('click', function() {
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({ filter: filterValue });
+
+    // Appliquer la classe "filter-active" au filtre actif et la retirer des autres
+    $('#portfolio-flters li').removeClass('filter-active');
+    $(this).addClass('filter-active');
+  });
+});
+</script>
+
+ 
 
         </div>
 
@@ -304,6 +338,7 @@
       <div class="container">
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <span>L'Equipe</span>
           <h2>L'Equipe</h2>
           <p>Nous accordons une grandes importance à notre équipe que nous vous présentons ci-dessous : </p>
         </div>
@@ -464,79 +499,4 @@
     include '<assets/php/footer.php';
     ?>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   
-  <!-- Vendor JS Files -->
-  
-  <script>
-    function updateOptions() {
-      // Récupérer la valeur sélectionnée dans la liste déroulante "categorie"
-      const selectedCategorie = document.getElementById("categorie").value;
-
-      // Récupérer le conteneur des options
-      const optionContainer = document.getElementById("option-container");
-
-      // Vider le conteneur des options actuelles
-      optionContainer.innerHTML = "";
-
-      // Ajouter les nouvelles options en fonction de la catégorie sélectionnée
-      switch (selectedCategorie) {
-        case "equitation":
-          optionContainer.innerHTML = `
-            <label for="sous-categorie">Sous-catégorie :</label>
-            <select id="sous-categorie" name="sous-categorie" required>
-              <option value="" disabled selected>Choisissez une sous-catégorie</option>
-              <option value="selle">Selle</option>
-              <option value="bride">Bride</option>
-            </select>
-          `;
-          break;
-        case "automobile":
-          optionContainer.innerHTML = `
-            <label for="sous-categorie">Sous-catégorie :</label>
-            <select id="sous-categorie" name="sous-categorie" required>
-              <option value="" disabled selected>Choisissez une sous-catégorie</option>
-              <option value="capote-de-voiture">Capote de voiture</option>
-              <option value="interieur-camping-car">Intérieur camping-car</option>
-            </select>
-          `;
-          break;
-        case "objet":
-          optionContainer.innerHTML = `
-            <label for="sous-categorie">Sous-catégorie :</label>
-            <select id="sous-categorie" name="sous-categorie" required>
-              <option value="" disabled selected>Choisissez une sous-catégorie</option>
-              <option value="fourreaux">Fourreaux</option>
-              <option value="porte-monnaie">Porte-monnaie</option>
-            </select>
-          `;
-          break;
-        case "mobilier":
-          optionContainer.innerHTML = `
-            <label for="sous-categorie">Sous-catégorie :</label>
-            <select id="sous-categorie" name="sous-categorie" required>
-              <option value="" disabled selected>Choisissez une sous-catégorie</option>
-              <option value="coussin-de-chaise">Coussin de chaise</option>
-            </select>
-          `;
-          break;
-        default:
-          break;
-      }
-    }
-  </script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
