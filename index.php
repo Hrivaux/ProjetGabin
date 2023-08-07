@@ -1,121 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Squadfree Bootstrap Template - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Squadfree
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
-  <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-    }
-
-    h1 {
-        text-align: center;
-        padding: 20px;
-        color: #333;
-    }
-
-    p {
-        text-align: center;
-        color: #555;
-        margin-bottom: 30px;
-    }
-
-    .photo-gallery {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .photo-gallery img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s;
-        cursor: pointer;
-    }
-
-    .photo-gallery img:hover {
-        transform: scale(1.1);
-    }
-
-    .photo-description {
-        text-align: center;
-        color: #777;
-        font-size: 14px;
-    }
-
-    
-        /* Styles CSS précédents restent inchangés */
-
-        .photo-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 999;
-        }
-
-        .photo-modal img {
-            max-width: 80%;
-            max-height: 80%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 10px;
-        }
-    </style>
-
-</head>
-
-<body>
 
 <?php
     // Inclure le pied de page
-    include '<assets/php/header.php';
+    include 'assets/php/header.php';
     ?>
+    
+<body>
+
+
 
   <!-- ======= Hero Section ======= -->
   <section id="hero">
@@ -129,7 +20,7 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="" class="">
+    <section id="about" class="">
       <h1>Ma Présentation en Photos</h1>
     <p>Bienvenue sur ma page de présentation! Voici quelques photos qui me représentent :</p>
 
@@ -279,107 +170,45 @@
         </div>
 
         <div class="row" data-aos="fade-in">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">Tout</li>
-              <li data-filter=".filter-app">Equitation</li>
-              <li data-filter=".filter-card">Automobile</li>
-              <li data-filter=".filter-web">Autre</li>
-            </ul>
-          </div>
-        </div>
+  <div class="col-lg-12 d-flex justify-content-center">
+    <ul id="portfolio-flters">
+      <li data-filter="*" class="filter-active">Tout</li>
+      <li data-filter=".equitation">Equitation</li>
+      <li data-filter=".automobile">Automobile</li>
+      <li data-filter=".autre">Autre</li>
+    </ul>
+  </div>
+</div>
 
         <div class="row portfolio-container" data-aos="fade-up">
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
+        
+       <?php $sql = "SELECT * FROM projects";
+    $stmt = $bdd->query($sql);
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
+    // Vérifier si des articles existent dans la base de données
+    if ($stmt->rowCount() > 0) {
+      while ($article = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        // Récupérez la catégorie de l'article
+        $category = $article['categorie'];
+        // Remplacez les espaces par des tirets et convertissez en minuscules pour obtenir le nom de classe
+        $category_class = 'filter-' . strtolower(str_replace(' ', '-', $category));
+  ?>
+         <div class="col-lg-4 col-md-6 portfolio-item <?php echo $category_class; ?>">
+    <div class="portfolio-wrap">
+      <img src="<?php echo $article['image1']; ?>" class="img-fluid custom-img" alt="">
+      <div class="portfolio-links">
+        <a href="<?php echo $article['image1']; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+        <a href="portfolio-details.php?article_id=<?php echo $article['id']; ?>" title="More Details"><i class="bx bx-link"></i></a>
+      </div>
+    </div>
+  </div>
+  <?php
+      }
+    } else {
+      echo "<p>Aucun article trouvé dans la base de données.</p>";
+    }
+  ?>
 
         </div>
 
@@ -578,27 +407,48 @@
 
           <div class="col-lg-6">
             <form action="assets/php/formulaire_contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="Name" class="form-control" id="name" placeholder="Votre Nom" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="Email" id="email" placeholder="Votre Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="Object" id="subject" placeholder="Objet" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="Message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Chargement</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Votre message à été envoyé, Merci Beaucoup !</div>
-              </div>
-              <div class="text-center"><button type="submit">Envoyer le message</button></div>
-            </form>
+            <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="text" name="Name" class="form-control" id="name" placeholder="Votre Nom" required>
+            </div>
+            <div class="col-md-6 form-group">
+              <input type="email" class="form-control" name="Email" id="email" placeholder="Votre Email" required>
+            </div>
+            <br><br><br>
+            <div class="form-group">
+            <input type="text" class="form-control" name="Object" id="subject" placeholder="Objet" required>
+          </div>
+          <br><br>
+          </div>
+          <div class="form-group">
+            <label for="categorie"></label>
+            <select id="categorie" name="categorie" onchange="updateOptions()" required class="form-control">
+              <option value="" disabled selected>Choisissez une catégorie</option>
+              <option value="equitation">Equitation</option>
+              <option value="automobile">Automobile</option>
+              <option value="objet">Objet</option>
+              <option value="mobilier">Mobilier</option>
+            </select>
+          </div>
+
+          <div id="option-container">
+            <!-- Les options seront ajoutées dynamiquement ici -->
+          </div>
+
+          <br>
+          <div class="form-group">
+            <textarea class="form-control" name="Message" rows="5" placeholder="Message" required></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Chargement</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Votre message a été envoyé, Merci Beaucoup !</div>
+          </div>
+          <div class="text-center"><button type="submit" class="btn btn-primary">Envoyer le message</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
           </div>
 
         </div>
@@ -616,7 +466,66 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+  
   <!-- Vendor JS Files -->
+  
+  <script>
+    function updateOptions() {
+      // Récupérer la valeur sélectionnée dans la liste déroulante "categorie"
+      const selectedCategorie = document.getElementById("categorie").value;
+
+      // Récupérer le conteneur des options
+      const optionContainer = document.getElementById("option-container");
+
+      // Vider le conteneur des options actuelles
+      optionContainer.innerHTML = "";
+
+      // Ajouter les nouvelles options en fonction de la catégorie sélectionnée
+      switch (selectedCategorie) {
+        case "equitation":
+          optionContainer.innerHTML = `
+            <label for="sous-categorie">Sous-catégorie :</label>
+            <select id="sous-categorie" name="sous-categorie" required>
+              <option value="" disabled selected>Choisissez une sous-catégorie</option>
+              <option value="selle">Selle</option>
+              <option value="bride">Bride</option>
+            </select>
+          `;
+          break;
+        case "automobile":
+          optionContainer.innerHTML = `
+            <label for="sous-categorie">Sous-catégorie :</label>
+            <select id="sous-categorie" name="sous-categorie" required>
+              <option value="" disabled selected>Choisissez une sous-catégorie</option>
+              <option value="capote-de-voiture">Capote de voiture</option>
+              <option value="interieur-camping-car">Intérieur camping-car</option>
+            </select>
+          `;
+          break;
+        case "objet":
+          optionContainer.innerHTML = `
+            <label for="sous-categorie">Sous-catégorie :</label>
+            <select id="sous-categorie" name="sous-categorie" required>
+              <option value="" disabled selected>Choisissez une sous-catégorie</option>
+              <option value="fourreaux">Fourreaux</option>
+              <option value="porte-monnaie">Porte-monnaie</option>
+            </select>
+          `;
+          break;
+        case "mobilier":
+          optionContainer.innerHTML = `
+            <label for="sous-categorie">Sous-catégorie :</label>
+            <select id="sous-categorie" name="sous-categorie" required>
+              <option value="" disabled selected>Choisissez une sous-catégorie</option>
+              <option value="coussin-de-chaise">Coussin de chaise</option>
+            </select>
+          `;
+          break;
+        default:
+          break;
+      }
+    }
+  </script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
