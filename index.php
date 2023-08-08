@@ -113,16 +113,16 @@
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Happy Clients</strong> consequuntur quae</p>
+              <i class="bi bi-emoji-smile">     </i>
+              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
+              <p style="text-align: left;"><strong>Projets Réalisé</strong></p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Projects</strong> adipisci atque cum quia aut</p>
             </div>
           </div>
@@ -130,7 +130,7 @@
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
             </div>
           </div>
@@ -162,7 +162,7 @@
     </section>
   -->
 
-    <!-- ======= Portfolio Section ======= -->
+    <!-- ======= portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
       <div class="container">
 
@@ -191,30 +191,35 @@ $articles = $stmt_articles->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!-- Votre code HTML pour les filtres -->
+
+
 <div class="col-lg-12 d-flex justify-content-center">
   <ul id="portfolio-flters">
     <li data-filter="*" class="filter-active">Tout</li>
-    <?php foreach ($categories as $categorie): ?>
-      <li data-filter=".<?= strtolower($categorie) ?>"><?= $categorie ?></li>
+    <?php foreach ($categories as $category): ?>
+      <li data-filter=".<?= strtolower($category) ?>"><?= $category ?></li>
     <?php endforeach; ?>
   </ul>
 </div>
 </div>
 
 <!-- Votre code HTML pour afficher les articles filtrables -->
-<!-- Votre code HTML pour afficher les articles filtrables -->
-<div class="row portfolio-container">
+<div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150">
   <?php foreach ($articles as $article): ?>
     <div class="col-lg-4 col-md-6 portfolio-item <?= strtolower($article['categorie']) ?>">
-      <div class="portfolio-wrap">
-        <img src="<?= $article['image1'] ?>" class="img-fluid custom-img" alt="">
-        <div class="portfolio-links">
-          <a href="<?= $article['image1'] ?>" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-          <a href="portfolio-details.php?article_id=<?= $article['id'] ?>" title="More Details"><i class="bx bx-link"></i></a>
-        </div>
+      <img src="<?= $article['image1'] ?>" class="img-fluid" alt="">
+      <div class="portfolio-info">
+        <h4><?= $article['titre'] ?></h4>
+        <p style="text-align: left;"><?= $article['categorie'] ?></p>
+        <a href="<?= $article['image1'] ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bx bx-plus"></i></a>
+        <a href="portfolio-details.php?article_id=<?= $article['id'] ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
       </div>
     </div>
   <?php endforeach; ?>
+</div>
+
+<!-- ... Votre code HTML existant ... -->
+
 </div>
 
 
@@ -247,7 +252,7 @@ $(document).ready(function() {
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </section><!-- End portfolio Section -->
 
     <!-- ======= Testimonials Section ======= -->
     <!--<section id="testimonials" class="testimonials section-bg">
@@ -404,7 +409,7 @@ $(document).ready(function() {
 
         <div class="section-title">
           <h2>Plusieurs manière de me contacter : </h2>
-          <p>Pour réaliser nimporte lesquel de vos projets vous pouvez me contacter avec les manières suivantes :</p>
+          <p>Pour réaliser nimporte lesquel de vos portfolios vous pouvez me contacter avec les manières suivantes :</p>
         </div>
 
         <div class="row">

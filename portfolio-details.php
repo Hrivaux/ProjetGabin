@@ -167,7 +167,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   </ul>
                 </div>
                 <div class="portfolio-description">
-                  <h2><?php echo $article['titre']; ?></h2>
+                  <h1><?php echo $article['titre']; ?></h1>
                   <p>
                     <?php echo $article['description']; ?>
                   </p>
