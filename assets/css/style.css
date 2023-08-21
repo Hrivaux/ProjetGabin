@@ -503,12 +503,12 @@ h6 {
 .section-title span {
   position: absolute;
   top: 30px;
-  color: #7c5555;
+  color: #cc1616;
   left: 0;
   right: 0;
   z-index: 1;
   font-weight: 700;
-  font-size: 52px;
+  font-size: 40px;
   text-transform: uppercase;
   line-height: 0;
 }
@@ -529,7 +529,7 @@ section {
 }
 
 .section-bg {
-  background-color:  #b9b7b7;
+  background-color:  #f2f2f2;
 }
 
 .section-title {
@@ -609,101 +609,33 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-.about {
-  background: url("../img/about-bg.jpg") center center no-repeat;
-  background-size: cover;
-  padding: 60px 0;
-  position: relative;
-}
-
-.about::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.75);
-  z-index: 9;
-}
-
-.about .container {
-  position: relative;
-  z-index: 10;
-}
-
-.about .content {
-  padding: 30px 30px 30px 0;
-}
-
 .about .content h3 {
-  font-weight: 700;
-  font-size: 34px;
-  color: #2f4d5a;
-  margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 26px;
 }
 
-.about .content p {
-  margin-bottom: 30px;
+.about .content ul {
+  list-style: none;
+  padding: 0;
 }
 
-.about .content .about-btn {
-  display: inline-block;
-  background: #cc1616d1;
-  padding: 6px 44px 8px 30px;
-  color: #fff;
-  border-radius: 50px;
-  transition: 0.3s;
-  position: relative;
+.about .content ul li {
+  padding-bottom: 10px;
 }
 
-.about .content .about-btn i {
-  font-size: 18px;
-  position: absolute;
-  right: 18px;
-  top: 9px;
-}
-
-.about .content .about-btn:hover {
-  background: #7bbad7;
-}
-
-.about .icon-boxes .icon-box {
-  margin-top: 30px;
-}
-
-.about .icon-boxes .icon-box i {
-  font-size: 40px;
-  color: #cc1616d1;
-  margin-bottom: 10px;
-}
-
-.about .icon-boxes .icon-box h4 {
+.about .content ul i {
   font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 10px 0;
+  padding-right: 4px;
+  color: #cc1616;
 }
 
-.about .icon-boxes .icon-box p {
-  font-size: 15px;
-  color: #848484;
-}
-
-@media (max-width: 1200px) {
-  .about .content {
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .about {
-    text-align: center;
-  }
+.about .content p:last-child {
+  margin-bottom: 0;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #ffff;
   margin: 0;
   padding: 0;
 }
@@ -718,6 +650,12 @@ p {
   text-align: center;
   color: #555;
   margin-bottom: 30px;
+}
+.column-list {
+  column-count: 2; /* Nombre de colonnes */
+  column-gap: 20px; /* Espacement entre les colonnes */
+  list-style: none; /* Supprimez les puces de la liste */
+  padding-left: 0; /* Supprimez le padding gauche par défaut de la liste */
 }
 
 .photo-gallery {

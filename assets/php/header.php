@@ -12,7 +12,7 @@ include('assets/php/sql.php')
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Portfolio Details - Squadfree Bootstrap Template</title>
+  <title>Sellerie Personeni</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -47,7 +47,7 @@ include('assets/php/sql.php')
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>Sellerie Personeni</span></a></h1>
+        <h1 class="text-light"><a href="index.php"><span>Sellerie Personeni</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -78,7 +78,7 @@ include('assets/php/sql.php')
           </li>-->
           <?php
 $query = "
-SELECT categorie, titre
+SELECT titre, categorie
 FROM projects
 ORDER BY categorie
 ";
@@ -96,17 +96,27 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $current_categorie = null;
     foreach ($result as $row):
       if ($current_categorie !== $row['categorie']):
+        if ($current_categorie !== null) {
+          echo '</ul></li>'; // Ferme la liste des titres de l'ancienne catégorie et le li
+        }
         $current_categorie = $row['categorie'];
     ?>
         <li>
           <strong>Mes derniers <?= $current_categorie ?></strong>
-        </li>
-      <?php endif; ?>
+          <ul class="column-list"> <!-- Ouvre la liste des titres de la catégorie en colonne -->
+      <?php endif;
+      // Affiche le titre du projet pour chaque catégorie
+      ?>
       <li>
-        <a href="index.php"><?= $row['titre'] ?></a>
+        <a href="index.php"><?php echo $row['titre'] ?></a>
         <!-- Ajoutez plus d'informations sur le projet au besoin -->
       </li>
-    <?php endforeach; ?>
+    <?php endforeach;
+    // Ferme la dernière liste déroulante et le dernier li
+    if ($current_categorie !== null) {
+      echo '</ul></li>';
+    }
+    ?>
   </ul>
 </li>
               <!--<li>

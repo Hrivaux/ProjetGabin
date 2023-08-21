@@ -26,11 +26,11 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Lien Utiles</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Accueil</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">A propose de nous</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Mes projets</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Mes services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Contacté moi</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#hero">Accueil</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#about">A propose de nous</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#portfolio">Mes projets</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#services">Mes services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#contact">Contacté moi</a></li>
             </ul>
           </div>
 
