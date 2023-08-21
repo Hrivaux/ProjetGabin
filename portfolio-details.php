@@ -6,13 +6,13 @@ include('assets/php/sql.php')
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Portfolio Details - Squadfree Bootstrap Template</title>
+  <title>Sellerie Personeni</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -47,7 +47,7 @@ include('assets/php/sql.php')
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>Sellerie Personeni</span></a></h1>
+        <h1 class="text-light"><a href="index.php"><span>Sellerie Personeni</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -111,17 +111,84 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a href="#">Column 5 link 2</a>
                 <a href="#">Column 5 link 3</a>
               </li>-->
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
-
 <?php
+  if (isset($_GET['article_id'])) {
+    $article_id = $_GET['article_id'];
+
+    // Préparez et exécutez la requête SQL pour récupérer le titre de l'article
+    $sql = "SELECT titre FROM projects WHERE id = :article_id";
+    $stmt = $bdd->prepare($sql);
+    $stmt->bindParam(':article_id', $article_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Vérifier si l'article avec l'identifiant donné existe dans la base de données
+    if ($stmt->rowCount() > 0) {
+        $article = $stmt->fetch(PDO::FETCH_ASSOC);
+        $titre_article = $article['titre'];
+    } else {
+        $titre_article = "Projet non trouvé";
+    }
+} else {
+    $titre_article = "Identifiant du projet non spécifié";
+}
+?>
+
+  <main id="main">
+    <br><br>
+  <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Détails du Projet</h2>
+          <ol>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="index.php">Projets</a></li>
+            <li>Détails du projet <?php echo $titre_article; ?></li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- Breadcrumbs Section -->
+
+
+  <section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+          <div class="portfolio-details-slider swiper">
+            <div class="swiper-wrapper align-items-center">
+              <?php
+              if (isset($_GET['article_id'])) {
+                $article_id = $_GET['article_id'];
+
+                // Préparez et exécutez la requête SQL pour récupérer les images associées à l'article
+                $sql = "SELECT image FROM image_projets WHERE id_projets = :article_id";
+                $stmt = $bdd->prepare($sql);
+                $stmt->bindParam(':article_id', $article_id, PDO::PARAM_INT);
+                $stmt->execute();
+
+                // Afficher les images dans le carousel
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo '<div class="swiper-slide">
+                          <img src="' . $row['image'] . '" alt="">
+                        </div>';
+                }
+              }
+              ?>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+
+              <?php
     if (isset($_GET['article_id'])) {
       $article_id = $_GET['article_id'];
 
@@ -135,27 +202,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       if ($stmt->rowCount() > 0) {
         $article = $stmt->fetch(PDO::FETCH_ASSOC);
   ?>
-
-<main id="main">
-        <section id="portfolio-details" class="portfolio-details">
-          <div class="container">
-            <div class="row gy-4">
-              <div class="col-lg-8">
-                <div class="portfolio-details-slider swiper">
-                  <div class="swiper-wrapper align-items-center">
-                    <!-- Vous pouvez ajouter ici les images du projet avec un code PHP pour générer les balises d'image dynamiquement -->
-                    <div class="swiper-slide">
-                      <img src="<?php echo $article['image1']; ?>" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                      <img src="chemin_vers_votre_dossier_img/<?php echo $article['image2']; ?>" alt="">
-                    </div>
-                    <!-- Ajoutez d'autres images ici -->
-                  </div>
-                  <div class="swiper-pagination"></div>
-                </div>
-              </div>
-
               <div class="col-lg-4">
                 <div class="portfolio-info">
                   <h3>Informations sur le projet</h3>

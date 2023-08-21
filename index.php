@@ -19,42 +19,33 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="">
-    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-    <span>Ma Présentation en Photos</span>
-      <h2>Ma Présentation en Photos</h2>
-    <p>Bienvenue sur ma page de présentation! Voici quelques photos qui me représentent :</p>
+    <section id="about" class="section-bg about">
+      <div class="container">
 
-    <div class="photo-gallery">
-        <img src="assets/img/buger.png" alt="Photo 1" onclick="showImage('assets/img/buger.png')">
-        <img src="chemin/vers/photo2.jpg" alt="Photo 2" onclick="showImage('chemin/vers/photo2.jpg')">
-        <img src="chemin/vers/photo3.jpg" alt="Photo 3" onclick="showImage('chemin/vers/photo3.jpg')">
-        <!-- Ajoutez ici d'autres images si nécessaire -->
-    </div>
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <p class="fst-italic">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+            </ul>
+            <p>
+              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum
+            </p>
+          </div>
+        </div>
 
-    <div class="photo-modal" onclick="hideImage()">
-        <img id="modal-image" src="" alt="Image agrandie">
-    </div>
-
-    <p class="photo-description">Cliquez sur une image pour l'agrandir.</p>
-
-    <p>Merci de visiter ma page!</p>
-
-    <script>
-        function showImage(imageSrc) {
-            const modal = document.querySelector('.photo-modal');
-            const modalImage = document.getElementById('modal-image');
-            modalImage.src = imageSrc;
-            modal.style.display = 'flex';
-        }
-
-        function hideImage() {
-            const modal = document.querySelector('.photo-modal');
-            modal.style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+      </div>
     </section><!-- End About Section -->
 
     <!-- ======= Services Section ======= -->
@@ -212,7 +203,7 @@ $articles = $stmt_articles->fetchAll(PDO::FETCH_ASSOC);
         <h4><?= $article['titre'] ?></h4>
         <p style="text-align: left;"><?= $article['categorie'] ?></p>
         <a href="<?= $article['image1'] ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bx bx-plus"></i></a>
-        <a href="portfolio-details.php?article_id=<?= $article['id'] ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+        <a href="portfolio-details.php?article_id=<?= $article['id'] ?>" class="details-link" title="Plus de détails"><i class="bx bx-link"></i></a>
       </div>
     </div>
   <?php endforeach; ?>
@@ -338,7 +329,7 @@ $(document).ready(function() {
       </div>
     </section>-->
 
-    <!-- ======= Team Section ======= -->
+    <!-- ======= Team Section ======= 
     <section id="team" class="team">
       <div class="container">
 

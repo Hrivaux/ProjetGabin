@@ -1,0 +1,7 @@
+header pour la page portfolio-detail.php
+Page de présentation pour elle (about)
+Insérer tout ses projets 
+Voir avec elle pour le formulaire
+Voir avec elle pour son logo
+Voir pour les services (qu'est ce qu'elle propose exactement)
+modifier le nom de toute ces photos
