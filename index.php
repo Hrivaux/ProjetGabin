@@ -243,7 +243,28 @@ $(document).ready(function() {
         </div>
 
       </div>
-    </section><!-- End portfolio Section -->
+    </section>
+    
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const loadMoreButton = document.getElementById("load-more-button");
+    const portfolioContainer = document.querySelector(".portfolio-container");
+    const hiddenProjects = <?= json_encode(array_slice($articles, $maxProjectsToShow)) ?>;
+    
+    loadMoreButton.addEventListener("click", function() {
+        hiddenProjects.forEach(function(article) {
+            const newProject = document.createElement("div");
+            newProject.className = `col-lg-4 col-md-6 portfolio-item ${article.categorie}`;
+            newProject.innerHTML = `
+                <!-- Votre contenu de projet ici -->
+            `;
+            portfolioContainer.appendChild(newProject);
+        });
+        
+        loadMoreButton.style.display = "none";
+    });
+});
+</script><!-- End portfolio Section -->
 
     <!-- ======= Testimonials Section ======= -->
     <!--<section id="testimonials" class="testimonials section-bg">
@@ -443,25 +464,46 @@ $(document).ready(function() {
               <input type="text" name="Name" class="form-control" id="name" placeholder="Votre Nom" required>
             </div>
             <div class="col-md-6 form-group">
+              <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Votre Prénom" required>
+            </div>
+            <br><br><br>
+            <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="tel" name="tel" class="form-control" id="tel" placeholder="Votre Téléphone" required>
+            </div>
+            <div class="col-md-6 form-group">
               <input type="email" class="form-control" name="Email" id="email" placeholder="Votre Email" required>
             </div>
             <br><br><br>
             <div class="form-group">
             <input type="text" class="form-control" name="Object" id="subject" placeholder="Objet" required>
           </div>
-          <br><br>
+          <br>
           </div>
           <div class="form-group">
             <label for="categorie"></label>
-            <select id="categorie" name="categorie" onchange="updateOptions()" required class="form-control">
-              <option value="" disabled selected>Choisissez une catégorie</option>
-              <option value="equitation">Equitation</option>
-              <option value="automobile">Automobile</option>
-              <option value="objet">Objet</option>
-              <option value="mobilier">Mobilier</option>
+            <select id="categorie" name="categorie"  class="form-control">
+              <option value="" disabled selected>Choisissez une catégorie :</option>
+              <option value="bovin">Matériels Bovins</option>
+              <option value="equin">Matériel Equins</option>
+              <option value="bateau">Coussin Bateaux</option>
+              <option value="automobile">Intérieurs automobile</option>
+              <option value="maroquinerie">Maroquineries</option>
+              <option value="ceinture">Ceintures</option>
+              <option value="jacuzzi">Houuse de Jacuzzi</option>
+              <option value="canape">Canapé</option>
+              <option value="terrasse">Matériel Terrasse et Extérieur</option>
             </select>
           </div>
-
+          <div class="form-group">
+            <label for="categorie2"></label>
+            <select id="categorie2" name="categorie2"  class="form-control">
+              <option value="" disabled selected>Choisissez votre status :</option>
+              <option value="pro">Professionnel</option>
+              <option value="particulier">Particulier</option>
+              
+            </select>
+          </div>
           <div id="option-container">
             <!-- Les options seront ajoutées dynamiquement ici -->
           </div>
