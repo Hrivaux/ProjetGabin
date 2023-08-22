@@ -43,81 +43,11 @@ include('assets/php/sql.php')
   ======================================================== -->
 </head>
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top header-transparent">
-    <div class="container d-flex align-items-center justify-content-between position-relative">
 
-      <div class="logo">
-        <h1 class="text-light"><a href="index.php"><span>Sellerie Personeni</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="index.php#hero">Accueil</a></li>
-          <li><a class="nav-link scrollto" href="index.php#about">A propos de nous</a></li>
-          <!--<li><a class="nav-link scrollto" href="#services">Nos prjets </a></li>-->
-          <li><a class="nav-link scrollto" href="index.php#services">Mes services</a></li>
-          <!--<li><a class="nav-link scrollto" href="#team">Team</a></li>-->
-          <!--<li class="dropdown"><a href="#"><span>Mes projets</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>-->
-          <?php
-// Supposons que vous avez une connexion PDO établie et stockée dans la variable $bdd
-// Requête pour récupérer le dernier élément de chaque catégorie
-$query = "SELECT * FROM projects GROUP BY categorie ORDER BY id DESC";
-$stmt = $bdd->prepare($query);
-$stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+<?php
+include('assets/php/header.php')
 ?>
-
-<li class="dropdown megamenu">
-  <a class="nav-link scrollto" href="index.php#portfolio">
-    <span>Mes Projets</span> <i class="bi bi-chevron-down"></i>
-  </a>
-  <ul>
-    <?php foreach ($result as $row): ?>
-    <li>
-      <strong>Mes derniers <?= $row['categorie'] ?></strong>
-      <a href="#"><?= $row['titre'] ?></a>
-      <!-- Ajoutez plus d'informations sur le projet au besoin -->
-    </li>
-    <?php endforeach; ?>
-  </ul>
-</li>
-              <!--<li>
-                <strong>Column 4</strong>
-                <a href="#">Column 4 link 1</a>
-                <a href="#">Column 4 link 2</a>
-                <a href="#">Column 4 link 3</a>
-              </li>
-              <li>
-                <strong>Column 5</strong>
-                <a href="#">Column 5 link 1</a>
-                <a href="#">Column 5 link 2</a>
-                <a href="#">Column 5 link 3</a>
-              </li>-->
-              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
+<!-- End Header -->
 <?php
   if (isset($_GET['article_id'])) {
     $article_id = $_GET['article_id'];
@@ -206,10 +136,12 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="portfolio-info">
                   <h3>Informations sur le projet</h3>
                   <ul>
-                    <li><strong>Catégorie</strong>: <?php echo $article['categorie']; ?></li>
-                    <li><strong>Client</strong>: <?php echo $article['client']; ?></li>
-                    <li><strong>Date du projet</strong>: <?php echo $article['date']; ?></li>
-                    <li><strong>URL du projet</strong>: <a href="<?php echo $article['project_url']; ?>"><?php echo $article['project_url']; ?></a></li>
+                    <li><strong>Titre </strong>: <?php echo $article['titre']; ?></li>
+                    <li><strong>Catégorie </strong>: <?php echo $article['categorie']; ?></li>
+                    <li><strong>Description </strong>: <?php echo $article['description']; ?></li>
+                    <li><strong>Méthode employé </strong>: Couture </li>
+                    <li><strong>Matériaux utilisé  </strong>: Cuire</li>
+                   
                   </ul>
                 </div>
                 <div class="portfolio-description">

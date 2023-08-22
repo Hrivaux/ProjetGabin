@@ -55,9 +55,10 @@ include('assets/php/sql.php')
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="index.php#hero">Accueil</a></li>
-          <li><a class="nav-link scrollto" href="index.php#about">A propos de nous</a></li>
+          <li><a class="nav-link scrollto" href="index.php#about">A Propos de Nous</a></li>
           <!--<li><a class="nav-link scrollto" href="#services">Nos prjets </a></li>-->
-          <li><a class="nav-link scrollto" href="index.php#services">Mes services</a></li>
+          <li><a class="nav-link scrollto" href="index.php#services">Mes Services</a></li>
+          <li><a class="nav-link scrollto" href="index.php#portfolio">Mes Projets</a></li>
           <!--<li><a class="nav-link scrollto" href="#team">Team</a></li>-->
           <!--<li class="dropdown"><a href="#"><span>Mes projets</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -76,49 +77,7 @@ include('assets/php/sql.php')
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>-->
-          <?php
-$query = "
-SELECT titre, categorie
-FROM projects
-ORDER BY categorie
-";
-$stmt = $bdd->prepare($query);
-$stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
-<li class="dropdown megamenu">
-  <a class="nav-link scrollto" href="index.php#portfolio">
-    <span>Mes Projets</span> <i class="bi bi-chevron-down"></i>
-  </a>
-  <ul>
-    <?php
-    $current_categorie = null;
-    foreach ($result as $row):
-      if ($current_categorie !== $row['categorie']):
-        if ($current_categorie !== null) {
-          echo '</ul></li>'; // Ferme la liste des titres de l'ancienne catégorie et le li
-        }
-        $current_categorie = $row['categorie'];
-    ?>
-        <li>
-          <strong>Mes derniers <?= $current_categorie ?></strong>
-          <ul class="column-list"> <!-- Ouvre la liste des titres de la catégorie en colonne -->
-      <?php endif;
-      // Affiche le titre du projet pour chaque catégorie
-      ?>
-      <li>
-        <a href="index.php"><?php echo $row['titre'] ?></a>
-        <!-- Ajoutez plus d'informations sur le projet au besoin -->
-      </li>
-    <?php endforeach;
-    // Ferme la dernière liste déroulante et le dernier li
-    if ($current_categorie !== null) {
-      echo '</ul></li>';
-    }
-    ?>
-  </ul>
-</li>
+          
               <!--<li>
                 <strong>Column 4</strong>
                 <a href="#">Column 4 link 1</a>

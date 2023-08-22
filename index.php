@@ -12,7 +12,7 @@
   <section id="hero">
     <div class="hero-container" data-aos="fade-up">
       
-      <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+      
     </div>
   </section><!-- End Hero -->
 
@@ -21,13 +21,17 @@
     <!-- ======= About Section ======= -->
     <section id="about" class="section-bg about">
       <div class="container">
-
+      <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <span>A Propos de Moi</span>
+          <h2>A Propos de Moi</h2>
+          <p>Voici ma présentation</p>
+        </div>
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="assets/img/ceinture4.jpeg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>Voici ma présentation en quelque mot.</h3>
             <p class="fst-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -99,7 +103,11 @@
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts  section-bg">
       <div class="container">
-
+      <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <span>Quelques Chiffre Clé</span>
+          <h2>Quelques Chiffre Clé</h2>
+          <p>Retrouver ci dessous les chiffres clé</p>
+        </div>
         <div class="row no-gutters">
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
@@ -419,9 +427,10 @@ document.addEventListener("DOMContentLoaded", function() {
     <section id="contact" class="contact section-bg">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Plusieurs manière de me contacter : </h2>
-          <p>Pour réaliser nimporte lesquel de vos portfolios vous pouvez me contacter avec les manières suivantes :</p>
+      <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <span>Me Contactez</span>
+          <h2>Me Contactez</h2>
+          <p>Voici les plusieurs manière de me contactez : </p>
         </div>
 
         <div class="row">
@@ -454,7 +463,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="row">
 
           <div class="col-lg-6 ">
-            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110917.14384974421!2d6.309105780405189!3d46.720538242456435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478dafb9b2bfd21f%3A0x3d8e5398cdceca22!2s20%20Rue%20Beau%20Site%2C%2025160%20Labergement-Sainte-Marie!5e0!3m2!1sfr!2sfr!4v1636912268752!5m2!1sfr!2sfr" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110917.14384974421!2d6.309105780405189!3d46.720538242456435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478dafb9b2bfd21f%3A0x3d8e5398cdceca22!2s20%20Rue%20Beau%20Site%2C%2025160%20Labergement-Sainte-Marie!5e0!3m2!1sfr!2sfr!4v1636912268752!5m2!1sfr!2sfr" frameborder="0" style="border:0; width: 100%; height: 600px;" allowfullscreen></iframe>
           </div>
 
           <div class="col-lg-6">
