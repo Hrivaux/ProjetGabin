@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Mon mail : </h3>
-              <p>sophiebitz@windowslive.com</p>
+              <p>sophie@sellerie-personeni.com</p>
             </div>
           </div>
 

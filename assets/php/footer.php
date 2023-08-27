@@ -11,7 +11,7 @@
                 Adresse : <br>
                 20 Rue Beau Site, 25160 Labergement-Sainte-Marie<br><br>
                 <strong>Téléphone : </strong>06 82 49 05 18<br>
-                <strong>Email : </strong>sophiebitz@windowslive.com<br>
+                <strong>Email : </strong>sophie@sellerie-personeni.com<br>
               </p>
               <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
