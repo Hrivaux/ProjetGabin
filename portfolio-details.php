@@ -79,7 +79,7 @@ include('assets/php/header.php')
           <h2>Détails du Projet</h2>
           <ol>
             <li><a href="index.php">Accueil</a></li>
-            <li><a href="index.php">Projets</a></li>
+            <li><a href="index.php#portfolio">Projets</a></li>
             <li>Détails du projet <?php echo $titre_article; ?></li>
           </ol>
         </div>
@@ -168,5 +168,5 @@ $bdd = null;
 
 <?php
     // Inclure le pied de page
-    include '<assets/php/footer.php';
+    include 'assets/php/footer.php';
     ?>

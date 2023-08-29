@@ -543,7 +543,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <!-- ======= Footer ======= -->
   <?php
     // Inclure le pied de page
-    include '<assets/php/footer.php';
+    include 'assets/php/footer.php';
     ?>
 
   
