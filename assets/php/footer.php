@@ -6,7 +6,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
               <h3>Sellerie Personeni</h3>
-              <p class="pb-3"><em>L'avenir appartient à ceux qui se lève tôt.</em></p>
+              <p class="pb-3"><em>L'avenir appartient à ceux qui se lèvent tôt.</em></p>
               <p>
                 Adresse : <br>
                 20 Rue Beau Site, 25160 Labergement-Sainte-Marie<br><br>
@@ -14,10 +14,7 @@
                 <strong>Email : </strong>sophie@sellerie-personeni.com<br>
               </p>
               <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="https://www.facebook.com/p/Sellerie-Sophie-Personeni-100072507413033/" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
               </div>
             </div>
@@ -27,40 +24,22 @@
             <h4>Lien Utiles</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="index.php#hero">Accueil</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.php#about">A propose de nous</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.php#portfolio">Mes projets</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#about">À propose de moi</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#portfolio">Mes créations</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="index.php#services">Mes services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.php#contact">Contacté moi</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.php#contact">Contactez moi</a></li>
             </ul>
           </div>
-
-          <!--<div class="col-lg-2 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>-->
-
-          
-
         </div>
       </div>
     </div>
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Squadfree</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>SELLERIE PERSONENI</span></strong>.
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> & Développer par <a href="https://bootstrapmade.com/">Gabin TOURNIER</a>
+      <div class="credits"
+        <a href="https://bootstrapmade.com/" >Design par BootstrapMade</a> & développement par <a href="https://www.linkedin.com/in/gabin-tournier-a42552210/">Gabin TOURNIER</a>
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -159,6 +138,49 @@ $(document).ready(function() {
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const loadMoreButton = document.getElementById("load-more-button");
+        const portfolioContainer = document.querySelector(".portfolio-container");
+        const hiddenProjects = <?= json_encode(array_slice($articles, $maxProjectsToShow)) ?>;
+
+        loadMoreButton.addEventListener("click", function() {
+            hiddenProjects.forEach(function(article) {
+                const newProject = document.createElement("div");
+                newProject.className = `col-lg-4 col-md-6 portfolio-item ${article.categorie}`;
+                newProject.innerHTML = `
+                <!-- Votre contenu de projet ici -->
+            `;
+                portfolioContainer.appendChild(newProject);
+            });
+
+            loadMoreButton.style.display = "none";
+        });
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Initialiser Isotope sur la liste d'articles
+        var $grid = $('.portfolio-container').isotope({
+            itemSelector: '.portfolio-item',
+            layoutMode: 'fitRows'
+        });
+
+        // Filtrer les articles lorsque l'utilisateur clique sur un filtre
+        $('#portfolio-flters li').on('click', function() {
+            var filterValue = $(this).attr('data-filter');
+            $grid.isotope({ filter: filterValue });
+
+            // Appliquer la classe "filter-active" au filtre actif et la retirer des autres
+            $('#portfolio-flters li').removeClass('filter-active');
+            $(this).addClass('filter-active');
+        });
+    });
+</script>
 </body>
 
 </html>
