@@ -22,7 +22,7 @@
     <section id="about" class="section-bg about">
       <div class="container">
       <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-        <span>A Propos de Moi</span>
+        
           <h2>A Propos de Moi</h2>
           <p>Voici ma présentation</p>
         </div>
@@ -57,8 +57,8 @@
       <div class="container">
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-        <span>Services</span>
-          <h2>Services</h2>
+        <h2>Services</h2>
+          
           <p>Retrouver ci dessous tout les services que je peux vous proposer</p>
         </div>
 
@@ -66,32 +66,50 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">Confection d'équipement pour chevaux</a></h4>
-              <p class="description">---------------------------</p>
+              <h4 class="title"><a href="">Confection d'équipement pour  chevaux, vaches et animaux de
+compagnies</a></h4>
+              <p class="description">Que cela soit pour le travail ou le loisir les équipements de votre animal de compagnie ou de
+travail sont primordiales. Je confectionne des articles également pour des animaux avec
+différentes pathologie ou malformations physique.
+La confection se fait sur mesures selon vos envies et les besoins physique de votre animal.
+Les courroies de cloches pour bovins ou de décorations font aussi partie de mes calcifications</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Confection d'équipement pour voiture/bateaux</a></h4>
-              <p class="description">-------------------------</p>
+              <h4 class="title"><a href="">Confection pour voitures/ bateaux/ motos</a></h4>
+              <p class="description">Rénovation, restauration comme a l’origine ou réfection avec du matériel moderne je redonne une
+seconde vie a vos véhicules de tous types.
+Selle de motos, voitures de collections, véhicule de travail ou de tout les jours la polyvalence de
+ma formation saura vous donner satisfaction.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">Confection d'objet (fourreaux/porte monnaie)</a></h4>
-              <p class="description">-------------------</p>
+              <h4 class="title"><a href="">Confection d’articles de maroquinerie ( porte
+monnaies/ ceintures/ bourses etc…)</a></h4>
+              <p class="description">Tout les articles de maroquinerie sont personnalisables. Gravures sur cuir au laser ou repoussage
+entièrement exécuté a la main.
+Les besoins sont divers, les utilisations infinies et différentes. Je m’adapte a vos besoins et vos
+envies en fonction de votre projet.
+Je confectionne également des protections pour des couteaux, haches et des outils de travail en
+tout genre.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Confection de mobilier</a></h4>
-              <p class="description">--------------------------</p>
+              <h4 class="title"><a href="">Confection de mobilier extérieur ou intérieur</a></h4>
+              <p class="description">Les confections sont diverses et variées. Je répare également des bâches endommagées ou
+déchirées.
+Ameublement de jardin, housse de jaccuzzi de parasole ou autre objets devant être protégé des
+intempérie,
+Rénovation de canapé d’intérieur, chaise, tabouret de bars, table de massages etc… </p>
             </div>
           </div>
 
@@ -104,7 +122,7 @@
     <section id="counts" class="counts  section-bg">
       <div class="container">
       <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-        <span>Quelques Chiffre Clé</span>
+        
           <h2>Quelques Chiffre Clé</h2>
           <p>Retrouver ci dessous les chiffres clé</p>
         </div>
@@ -166,7 +184,7 @@
       <div class="container">
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-        <span>Mes Projets</span>
+        
           <h2>Mes Projets</h2>
           <p>Vous pourrez trouver ci dessous tout les projets que j'ai déjà réalisé : </p>
         </div>
@@ -428,7 +446,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="container" data-aos="fade-up">
 
       <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-        <span>Me Contactez</span>
+        
           <h2>Me Contactez</h2>
           <p>Voici les plusieurs manière de me contactez : </p>
         </div>
