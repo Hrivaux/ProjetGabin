@@ -1,6 +1,3 @@
-
-
-
 <?php
 include('assets/php/sql.php')
 ?>
@@ -29,49 +26,59 @@ include('assets/php/sql.php')
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .swiper-slide img {
+      height: 500px;
+      /* Hauteur fixe pour chaque image (ajustez selon vos besoins) */
+      width: 100%;
+      /* Ajustez la largeur à 100% pour remplir le conteneur */
+      object-fit: contain;
+      /* Conserver le ratio de l'image et ajuster pour tout afficher */
+    }
+  </style>
 
 </head>
 
 <?php
 include('assets/php/header.php');
 
-  if (isset($_GET['article_id'])) {
-    $article_id = $_GET['article_id'];
+if (isset($_GET['article_id'])) {
+  $article_id = $_GET['article_id'];
 
-    // Préparez et exécutez la requête SQL pour récupérer le titre de l'article
-    $sql = "SELECT titre FROM projects WHERE id = :article_id";
-    $stmt = $bdd->prepare($sql);
-    $stmt->bindParam(':article_id', $article_id, PDO::PARAM_INT);
-    $stmt->execute();
+  // Préparez et exécutez la requête SQL pour récupérer le titre de l'article
+  $sql = "SELECT titre FROM projects WHERE id = :article_id";
+  $stmt = $bdd->prepare($sql);
+  $stmt->bindParam(':article_id', $article_id, PDO::PARAM_INT);
+  $stmt->execute();
 
-    // Vérifier si l'article avec l'identifiant donné existe dans la base de données
-    if ($stmt->rowCount() > 0) {
-        $article = $stmt->fetch(PDO::FETCH_ASSOC);
-        $titre_article = $article['titre'];
-    } else {
-        $titre_article = "Projet non trouvé";
-    }
+  // Vérifier si l'article avec l'identifiant donné existe dans la base de données
+  if ($stmt->rowCount() > 0) {
+    $article = $stmt->fetch(PDO::FETCH_ASSOC);
+    $titre_article = $article['titre'];
+  } else {
+    $titre_article = "Projet non trouvé";
+  }
 } else {
-    $titre_article = "Identifiant du projet non spécifié";
+  $titre_article = "Identifiant du projet non spécifié";
 }
 ?>
 
-  <main id="main">
-    <br><br>
+<main id="main">
+  <br><br>
   <section class="breadcrumbs">
-      <div class="container">
+    <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Détails du Projet</h2>
-          <ol>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="index.php#portfolio">Projets</a></li>
-            <li>Détails du projet <?php echo $titre_article; ?></li>
-          </ol>
-        </div>
-
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Détails du Projet</h2>
+        <ol>
+          <li><a href="index.php">Accueil</a></li>
+          <li><a href="index.php#portfolio">Projets</a></li>
+          <li>Détails du projet <?php echo $titre_article; ?></li>
+        </ol>
       </div>
-    </section><!-- Breadcrumbs Section -->
+
+    </div>
+  </section><!-- Breadcrumbs Section -->
 
 
   <section id="portfolio-details" class="portfolio-details">
@@ -104,54 +111,50 @@ include('assets/php/header.php');
         </div>
 
 
-              <?php
-    if (isset($_GET['article_id'])) {
-      $article_id = $_GET['article_id'];
-
-      // Préparez et exécutez la requête SQL pour récupérer les détails de l'article
-      $sql = "SELECT * FROM projects WHERE id = :article_id";
-      $stmt = $bdd->prepare($sql);
-      $stmt->bindParam(':article_id', $article_id, PDO::PARAM_INT);
-      $stmt->execute();
-
-      // Vérifier si l'article avec l'identifiant donné existe dans la base de données
-      if ($stmt->rowCount() > 0) {
-        $article = $stmt->fetch(PDO::FETCH_ASSOC);
-  ?>
-              <div class="col-lg-4">
-                <div class="portfolio-info">
-                  <h3>Informations sur le projet</h3>
-                  <ul>
-                    <li><strong>Titre </strong>: <?php echo $article['titre']; ?></li>
-                    <li><strong>Catégorie </strong>: <?php echo $article['categorie']; ?></li>
-                    <li><strong>Description </strong>: <?php echo $article['description']; ?></li>
-                    <li><strong>Méthode employée </strong>: Couture </li>
-                    <li><strong>Matériaux utilisés </strong>: Cuire</li>
-                   
-                  </ul>
-                </div>
-                <div class="portfolio-description">
-                  <h1><?php echo $article['titre']; ?></h1>
-                  <p>
-                    <?php echo $article['description']; ?>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
         <?php
-} else {
-  echo "<p>Oops, on dirait que ce projet n'existe pas!</p>";
-}
+        if (isset($_GET['article_id'])) {
+          $article_id = $_GET['article_id'];
 
-$bdd = null;
-} else {
-  echo "<p>Identifiant du projet non spécifié.</p>";
-}
+          // Préparez et exécutez la requête SQL pour récupérer les détails de l'article
+          $sql = "SELECT * FROM projects WHERE id = :article_id";
+          $stmt = $bdd->prepare($sql);
+          $stmt->bindParam(':article_id', $article_id, PDO::PARAM_INT);
+          $stmt->execute();
+
+          // Vérifier si l'article avec l'identifiant donné existe dans la base de données
+          if ($stmt->rowCount() > 0) {
+            $article = $stmt->fetch(PDO::FETCH_ASSOC);
+        ?>
+            <div class="col-lg-4">
+              <div class="portfolio-info">
+                <h3>Informations sur le projet</h3>
+                <ul>
+                  <li><strong>Titre </strong>: <?php echo $article['titre']; ?></li>
+                  <li><strong>Catégorie </strong>: <?php echo $article['categorie']; ?></li>
+                  <li><strong>Description </strong>: <?php echo $article['description']; ?></li>
+                  <li><strong>Méthode employée </strong>: Couture </li>
+                  <li><strong>Matériaux utilisés </strong>: Cuire</li>
+
+                </ul>
+              </div>
+
+
+            </div>
+      </div>
+    </div>
+  </section>
+<?php
+          } else {
+            echo "<p>Oops, on dirait que ce projet n'existe pas!</p>";
+          }
+
+          $bdd = null;
+        } else {
+          echo "<p>Identifiant du projet non spécifié.</p>";
+        }
 ?>
 
 <?php
-    // Inclure le pied de page
-    include 'assets/php/footer.php';
-    ?>
+// Inclure le pied de page
+include 'assets/php/footer.php';
+?>
