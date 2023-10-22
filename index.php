@@ -50,7 +50,6 @@
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
         <h2>Services</h2>
-          
           <p>Retrouver ci dessous tout les services que je peux vous proposer</p>
         </div>
 
