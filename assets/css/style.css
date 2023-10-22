@@ -411,12 +411,12 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("https://sellerie-personeni.com/wp-content/uploads/2021/11/Home_BIG_1.jpg")
-    top center;
+  background: url("../img/header.jpeg") center top no-repeat;
   background-size: cover;
   position: relative;
   margin-bottom: -90px;
 }
+
 
 #hero .hero-container {
   position: absolute;
